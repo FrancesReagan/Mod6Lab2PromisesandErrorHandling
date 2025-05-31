@@ -55,12 +55,14 @@ export const fetchProductCatalog = (): Promise<Product[]> => {
   };
 
   //Simulate fetching product reviews//
-  export const fetchProductReviews = (productId: number): Promise<Review[]> => {
+  export const fetchProductReviews = (productId: number) => {
     return new Promise((resolve, reject)) => {
       setTimeout(() => {
-        if (Math.random() < 0.7) { //70% success rate//
+        const randomNumber = Math.random();
+        if (randomNumber< 0.7) { //70% success rate//
+          console.log(`Got reviews for product ${productId}`);
           //faux reviews based on productId//
-          const reviews: Review[] = [
+          const reviews = [
             {
               id: 1,
               productId: productId,
@@ -73,12 +75,43 @@ export const fetchProductCatalog = (): Promise<Product[]> => {
               id: 2,
               productId: productId,
               rating: 3.8,
-              
+              comment: "Pretty good product. I've used better",
+              reviewer: "Jane"
             }
-            
           ];
-
+          resolve(reviews);
+        } else {
+          console.log(`Could not get reviews for product ${productId}`);
+          reject(new DataError(`Failed to fetch reviews for product ID ${productId}`));
         }
-      })
-    }
-  }
+      }, 1500);
+        });
+      };
+    
+      //this function pretends to get sales data//
+      export const fetchSalesReport = () => {
+        return new Promise((resolve, reject) => {
+          //wait 1 second//
+          setTimeout(() => {
+            const randomNumber = Math.random();
+            //75% success rate//
+            if (randomNumber < 0.75) {
+              console.log("Got sales report");
+              //make faux sales report//
+              const report = {
+                totalSales: 125000,
+                unitsSold: 342,
+                averagePrice:365.50
+              };
+
+              resolve(report);
+            }else{
+              console.log("Could not get sales report");
+              reject(new NewtworkError("Failed to fetch sales report"));
+            }
+            }, 1000);
+          });
+        };
+                  
+      
+  
