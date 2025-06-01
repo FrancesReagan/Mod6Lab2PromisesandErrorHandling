@@ -2,7 +2,7 @@
 export class NetworkError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = "Network Error";
+    this.name = "NetworkError";
   }
 }
 
@@ -21,7 +21,7 @@ export interface Product {
 }
 
 export interface Review {
-  id: number:
+  id: number;
   productId: number;
   rating: number;
   comment: string;
@@ -55,8 +55,8 @@ export const fetchProductCatalog = (): Promise<Product[]> => {
   };
 
   //Simulate fetching product reviews//
-  export const fetchProductReviews = (productId: number) => {
-    return new Promise((resolve, reject)) => {
+  export const fetchProductReviews = (productId: number): Promise<Review[]> => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         const randomNumber = Math.random();
         if (randomNumber< 0.7) { //70% success rate//
@@ -68,7 +68,7 @@ export const fetchProductCatalog = (): Promise<Product[]> => {
               productId: productId,
               rating: 5,
               comment: "Excellent product!",
-              reviewer: "Jane Oaken"
+              reviewer: "Jane Oaken",
 
             },
             {
@@ -89,7 +89,7 @@ export const fetchProductCatalog = (): Promise<Product[]> => {
       };
     
       //this function pretends to get sales data//
-      export const fetchSalesReport = () => {
+      export const fetchSalesReport = (): Promise<SalesReport> => {
         return new Promise((resolve, reject) => {
           //wait 1 second//
           setTimeout(() => {
@@ -107,7 +107,7 @@ export const fetchProductCatalog = (): Promise<Product[]> => {
               resolve(report);
             }else{
               console.log("Could not get sales report");
-              reject(new NewtworkError("Failed to fetch sales report"));
+              reject(new NetworkError("Failed to fetch sales report"));
             }
             }, 1000);
           });
