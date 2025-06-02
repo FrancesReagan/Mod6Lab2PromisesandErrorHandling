@@ -112,3 +112,9 @@ Bad candidates for retries:
 Retries improve user experience by handling small network issues automatically, but they need to have limits to avoid overusing
 resources on permanent failures. Identifying which errors are likely to resolve themselves vs. which indicate real problems is crucial 
 for any developer's code.
+
+Acknowledgements: Per Scholas instructors: Abraham Tavrez and Colton Wright and my fellow 2025-RT-23 cohort members; 
+https://www.webdevtutor.net/blog/typescript-admin-dashboard
+https://www.webdevtutor.net/blog/typescript-try-catch-return-promise#google_vignette
+https://medium.com/@saeedkargosha/writing-a-promise-from-scratch-in-typescript-7dc8b7ed64a9
+and for later development: https://dev.to/jamesoyanna/developing-a-fullstack-e-commerce-application-with-typescript-4ni6
